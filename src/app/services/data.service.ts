@@ -9,12 +9,16 @@ import { Artist, Volunteer, Buyer, Order } from '../models/models';
 @Injectable()
 export class DataService {
 
-  constructor(private http: HttpClient) {}
+	private artistList: Artist[];
+	private artists: BehaviorSubject<Artist[]> = new BehaviorSubject([]);
 
-  getArtists() {
-  	this.http.get<Artist[]>('https://afmws.herokuapp.com/api/artists').subscribe(res => {
-  		console.log(res);
-  	});
-  }
+	constructor(private http: HttpClient) {}
+
+  	getArtists() {
+		this.http.get<Artist[]>('https://afmws.herokuapp.com/api/artists').subscribe(res => {
+			this.artistList = res;
+			this.artists.next(this.artistList);
+		}, err => console.log(err));
+  	}
 
 }
