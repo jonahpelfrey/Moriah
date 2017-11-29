@@ -15,6 +15,13 @@ export class DataService {
 
 	constructor(private http: HttpClient) {}
 
+	addArtist(artist: Artist) {
+		this.http.post('', artist).subscribe((res: any) => {
+			this.artistList.push(res.result);
+			this.artists.next(this.artistList);
+		}, err => console.log(err));
+	}
+
   	getArtists() {
 		this.http.get<Artist[]>('https://afmws.herokuapp.com/api/artists').subscribe(res => {
 			this.artistList = res;
