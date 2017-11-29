@@ -11,6 +11,7 @@ export class DataService {
 
 	private artistList: Artist[];
 	private artists: BehaviorSubject<Artist[]> = new BehaviorSubject([]);
+	public readonly artistsObs: Observable<Artist[]> = this.artists.asObservable();
 
 	constructor(private http: HttpClient) {}
 
