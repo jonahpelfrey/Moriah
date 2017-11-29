@@ -27,13 +27,13 @@ export class DataService {
 
 	constructor(private http: HttpClient) {}
 
-	addArtist(artist: Artist) {
-		this.http.post('', artist).subscribe((res: any) => {
-			this.artistList.push(res.result);
-			this.artists.next(this.artistList);
+  	addOrder(order: Order) {
+		this.http.post('https://afmws.herokuapp.com/api/orders', order).subscribe((res: any) => {
+			this.orderList.push(res.result);
+			this.orders.next(this.orderList);
 		}, err => console.log(err));
-	}
-
+  	}
+  	
   	getArtists() {
 		this.http.get<Artist[]>('https://afmws.herokuapp.com/api/artists').subscribe(res => {
 			this.artistList = res;
@@ -52,7 +52,7 @@ export class DataService {
   		this.http.get<Volunteer[]>('https://afmws.herokuapp.com/api/volunteers').subscribe(res => {
   			this.volunteerList = res;
   			this.volunteers.next(this.volunteerList);
-  		}, err => console.log(err)):
+  		}, err => console.log(err));
   	}
 
   	getOrders() {
