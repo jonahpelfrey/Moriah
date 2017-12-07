@@ -33,5 +33,18 @@ export interface Order {
 	date: string;
 	description: string;
 	price: number;
-	shipping: number;
 }
+
+export interface Purchase {
+
+	artDescription: string;
+	price: number;
+	shipping?: {
+		shippingCost: number;
+	}
+	notes: string;
+	paid: boolean;
+	
+}
+
+
