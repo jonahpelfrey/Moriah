@@ -15,7 +15,7 @@ export class OrderFormComponent implements OnInit {
 	private artistList: Observable<Artist[]> ;
 	private buyerList: Observable<Buyer[]>  ;
 	private volunteerList: Observable<Volunteer[]> ;
-	private id: number;
+	private orderId: number;
   	public date: Date;
   	public time: Date;
   	private artist: Artist;
@@ -29,12 +29,7 @@ export class OrderFormComponent implements OnInit {
 
 
 
-  constructor(private data:DataService) { 
-  //	this.data.search(this.searchTerm$)
-  //		.subscribe(results=> {
-  //			this.results = results.results;
-  //		});
-  }
+  constructor(private data:DataService) { }
 
   ngOnInit() {
   	this.artistList = this.data.artistsObs;

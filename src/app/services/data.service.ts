@@ -30,7 +30,7 @@ export class DataService {
 	private orders: BehaviorSubject<Order[]> = new BehaviorSubject([]);
 	public readonly ordersObs: Observable<Order[]> = this.orders.asObservable();
 
-  queryUrl: string = '?search=';
+  //queryUrl: string = '?search=';
 
 	constructor(private http: HttpClient) { }
 
