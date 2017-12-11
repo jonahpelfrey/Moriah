@@ -4,11 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/operator/switchMap';
-
 import { Artist, Volunteer, Buyer, Order } from '../models/models';
 
 @Injectable()
@@ -68,17 +63,5 @@ export class DataService {
   			this.orders.next(this.orderList);
   		}, err => console.log(err));
   	}
-
-  //  search(terms: Observable<string>) {
-  //    return terms.debounceTime(400)
-  //    .distinctUntilChanged()
-  //    .switchMap(term => this.searchEntries(term));
-  //  }
-
-  //  searchEntries(term){
-   //   return this.http
-  //    .get('https://afmws.herokuapp.com/api/artists' + this.queryUrl + term)
-  //    .map(res => res.json());
-  //  }
 
 }

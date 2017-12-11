@@ -1,49 +1,55 @@
 <div class="container">
 	<h1>Order Form</h1>
-	<form #orderForm="ngForm">
-		<div class="form-group"> 
-			<label for="firstName"> Buyer Name</label>
-			<input type="text" class="form-control" id="name" 
-				required
-				[(ngModel)]="Buyer.FirstName" name="name">
+	<div class="row">
+		
+		<div class="col-sm-6">
+			<form #orderForm="ngForm">
+				<div class="form-group"> 
+					<label for="firstName"> Buyer Name</label>
+					<input type="text" class="form-control" id="name" 
+						required
+						[(ngModel)]="search.buyerName" name="name">
+				</div>
+
+				<div class="form-group"> 
+					<label for="firstName">Artist Name</label>
+					<input type="text" class="form-control" id="name" 
+						required
+						[(ngModel)]="search.artistName" name="firstName">
+				</div>
+				<div class="form-group"> 
+					<label for="firstName"> Volunteer Name</label>
+					<input type="text" class="form-control" id="name" 
+						required
+						[(ngModel)]="search.volunteerName" name="firstName">
+				</div>
+
+			<!--	<div class="form-group">
+					<label for="buyer">Buyer</label>
+					<select class="form-control" id="buyer" required>
+						<option *ngFor="let buyer of buyers" [value]="buyer">{{buyer}}</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label for="artist">Artist</label>
+					<select class="form-control" id="artist" required>
+						<option *ngFor="let artist of artists" [value]="artist">{{artist}}</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label for="Volunteer">Artist</label>
+					<select class="form-control" id="volunteer" required>
+						<option *ngFor="let volunteer of volunteers" [value]="volunteer">{{volunteer}}</option>
+					</select>
+				</div>
+				-->
+
+				<button type="submit" class="btn btn-success">Submit</button>
+			</form>
 		</div>
 
-		<div class="form-group"> 
-			<label for="firstName">Artist Name</label>
-			<input type="text" class="form-control" id="name" 
-				required
-				[(ngModel)]="Artist.FirstName" name="firstName">
-		</div>
-		<div class="form-group"> 
-			<label for="firstName"> Volunteer Name</label>
-			<input type="text" class="form-control" id="name" 
-				required
-				[(ngModel)]="Volunteer.FirstName" name="firstName">
-		</div>
-
-	<!--	<div class="form-group">
-			<label for="buyer">Buyer</label>
-			<select class="form-control" id="buyer" required>
-				<option *ngFor="let buyer of buyers" [value]="buyer">{{buyer}}</option>
-			</select>
-		</div>
-
-		<div class="form-group">
-			<label for="artist">Artist</label>
-			<select class="form-control" id="artist" required>
-				<option *ngFor="let artist of artists" [value]="artist">{{artist}}</option>
-			</select>
-		</div>
-
-		<div class="form-group">
-			<label for="Volunteer">Artist</label>
-			<select class="form-control" id="volunteer" required>
-				<option *ngFor="let volunteer of volunteers" [value]="volunteer">{{volunteer}}</option>
-			</select>
-		</div>
-		-->
-
-		<button type="submit" class="btn btn-success">Submit</button>
-
-	</form>
+	</div>
+	
 </div>

@@ -16,26 +16,25 @@ export class OrderFormComponent implements OnInit {
 	private buyerList: Observable<Buyer[]>  ;
 	private volunteerList: Observable<Volunteer[]> ;
 	private orderId: number;
-  	public date: Date;
-  	public time: Date;
-  	private artist: Artist;
-  	private buyer: Buyer;
-  	private volunteer: Volunteer;
-  	private order: Order;
-  	private purchase: Purchase;
+	private artist: Artist;
+	private buyer: Buyer;
+	private volunteer: Volunteer;
+	private order: Order;
+	private purchase: Purchase;
+	private search: Object = {};
+	
+	public date: Date;
+	public time: Date;
+	
+	results: Object;
+	searchTerm$ = new Subject<string>();
 
-  	results: Object;
-  	searchTerm$ = new Subject<string>();
+	constructor(private data:DataService) { }
 
-
-
-  constructor(private data:DataService) { }
-
-  ngOnInit() {
-  	this.artistList = this.data.artistsObs;
-  	this.buyerList = this.data.buyersObs;
-  	this.volunteerList = this.data.volunteersObs;
-  }
-
+	ngOnInit() {
+		this.artistList = this.data.artistsObs;
+		this.buyerList = this.data.buyersObs;
+		this.volunteerList = this.data.volunteersObs;
+	}
 
 }

@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 
 import { DataService } from './services/data.service';
+import { SearchService } from './services/search.service';
+
 import { OrderFormComponent } from './order-form/order-form.component';
 
 
@@ -27,7 +29,7 @@ import { OrderFormComponent } from './order-form/order-form.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [DataService],
+  providers: [DataService, SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
