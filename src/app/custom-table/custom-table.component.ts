@@ -9,15 +9,8 @@ import { TableForm } from '../models/table-form';
   templateUrl: './custom-table.component.html',
   styleUrls: ['./custom-table.component.scss']
 })
-export class CustomTableComponent implements OnInit {
 
-	private _rows: Array<Object> = [];
-	private _columns: Array<string> = [];
-	private _data: Object = {};
-	private isEditing: boolean = false;
-	private rowBeingEdited: number = -1;
-	private indexOfField: number = -1;
-	private buttonText: string = "Edit";
+export class CustomTableComponent implements OnInit {
 
 	private rows: TableRow[] = [];
 	private columns: Array<String> = [];
@@ -29,7 +22,6 @@ export class CustomTableComponent implements OnInit {
 		this.createTable(data);
 	}
 
-
 	constructor() { }
 
 	ngOnInit() {
@@ -39,7 +31,6 @@ export class CustomTableComponent implements OnInit {
 	createTable(form: TableForm){
 		this.setColumns(form.columns);
 		this.setRows(form.rows);
-		console.log(this.rows);
 	}
 
 	setColumns(headers: Array<String>){
