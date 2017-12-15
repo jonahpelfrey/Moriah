@@ -1,0 +1,27 @@
+<div class="container">
+<div class="row">
+	<div class="col col-sm-12">	
+		<table class="table table-striped table-hover">
+		  <thead>
+			<tr>
+				<th style="width: 50px;">#</th>
+				<th *ngFor="let column of columns">{{column}}</th>
+				<th style="width: 150px;">Options</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr class="active" *ngFor="let i = index; let row of rows">
+			  <td *ngFor="let cell of row.cells">
+			  	<span *ngIf="!row.isActive">{{cell.content}}</span>
+			  	<input class="editing" *ngIf="row.isActive" [(ngModel)]="cell.content" [name]="cell.content" #[cell.content]="ngModel" type="text">
+			  </td>
+			  <td>
+				<button class="btn btn-warning" (click)="editRow(i)">Edit</button>
+				<button class="btn btn-success" (click)="saveChanges(i)">Save</button>
+			  </td>
+			</tr>
+		  </tbody>
+		</table>
+	</div> 
+</div>
+</div>
