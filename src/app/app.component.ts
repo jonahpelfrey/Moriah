@@ -28,12 +28,19 @@ export class AppComponent {
   	email: "nancy@gmail.com"
   };
 
+  private myOthersObject = {
+    name: "Tony",
+    age: "40",
+    occupation: "Civil Engineer",
+    email: "tony@gmail.com"
+  };
+
   constructor(private dataService: DataService) {}
 
   ngOnInit() {
   	this.dataService.getArtists();
 
     this.tableForm.columns.push("Name", "Age", "Occupation", "Email");
-    this.tableForm.rows.push(this.myObject, this.myOtherObject);
+    this.tableForm.rows.push(this.myObject, this.myOtherObject, this.myOthersObject);
   }
 }

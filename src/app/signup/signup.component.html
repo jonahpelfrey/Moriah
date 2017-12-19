@@ -1,0 +1,94 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">Sign Up</h3>
+	</div>
+	<div class="panel-body">
+		<h5 style="text-align: center;">Personal Information</h5>
+		<div class="row" style="color: #2196f3;">
+			<div class="col-sm-12">
+				<div class="form-group">
+				  <label class="control-label" for="inputDefault">First Name</label>
+				  <input type="text" class="form-control" id="inputDefault" placeholder="John">
+				</div>
+			</div>
+		</div>
+		<div class="row" style="color: #2196f3;">
+			<div class="col-sm-12">
+				<div class="form-group">
+				  <label class="control-label" for="inputDefault">Last Name</label>
+				  <input type="text" class="form-control" id="inputDefault" placeholder="Doe">
+				</div>
+			</div>
+		</div>
+		<div class="row" style="color: #2196f3;">
+			<div class="col-sm-12">
+				<div class="form-group">
+				  <label class="control-label" for="inputDefault">Phone Number</label>
+				  <div class="row">
+				  	<div class="col-xs-4">
+				  		<input type="text" class="form-control" id="inputDefault" maxlength="3" placeholder="(###)" style="text-align: center;">
+				  	</div>
+				  	<div class="col-xs-4">
+				  		<input type="text" class="form-control" id="inputDefault" maxlength="3" placeholder="###" style="text-align: center;">
+				  	</div>
+				  	<div class="col-xs-4">
+				  		<input type="text" class="form-control" id="inputDefault" maxlength="4" placeholder="####" style="text-align: center;">
+				  	</div>
+				  </div>
+				</div>
+			</div>
+		</div>
+		<div class="row" style="color: #2196f3;">
+			<div class="col-sm-12">
+				<div class="form-group">
+				  <label class="control-label" for="inputDefault">Email</label>
+				  <input type="text" class="form-control" id="inputDefault" placeholder="johndoe@gmail.com">
+				</div>
+			</div>
+		</div>
+		<div class="row" style="color: #2196f3;">
+			<div class="col-sm-12">
+				<div class="form-group">
+				  <label class="control-label" for="inputDefault">Address</label>
+				  <div class="row">
+				  	<div class="col-sm-12">
+				  		<input type="text" class="form-control" id="inputDefault" placeholder="Street">
+				  	</div>
+				  </div>
+				  <div class="row">
+				  	<div class="col-sm-12">
+				  		<input type="text" class="form-control" id="inputDefault" placeholder="Apt #">
+				  	</div>
+				  </div>
+				  <div class="row">
+				  	<div class="col-xs-4">
+				  		<input type="text" class="form-control" id="inputDefault" placeholder="City">
+				  	</div>
+				  	<div class="col-xs-4">
+				  		<select class="form-control" id="select">
+				          <option *ngFor="let state of states">{{state}}</option>
+				        </select>
+				  	</div>
+				  	<div class="col-xs-4">
+				  		<input type="text" class="form-control" id="inputDefault" placeholder="Zipcode">
+				  	</div>
+				  </div>
+				</div>
+			</div>
+		</div>
+		<div class="row" style="padding-top: 20px;">
+			<div class="col-sm-12">
+				<div class="checkbox">
+		          <label>
+		            <input type="checkbox">I want to receive emails about future Moriah Art Fairs
+		          </label>
+		        </div>
+	    	</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<button class="btn btn-success btn-lg btn-block">Register</button>
+			</div>
+		</div>
+	</div>
+</div>

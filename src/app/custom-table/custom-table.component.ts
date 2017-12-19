@@ -52,7 +52,6 @@ export class CustomTableComponent implements OnInit {
 
 			this.rows.push(new TableRow(tableCells, i));
 		}
-		
 	}
 
 	editRow(index: number){

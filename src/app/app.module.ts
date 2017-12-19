@@ -15,6 +15,7 @@ import { SearchService } from './services/search.service';
 import { OrderFormComponent } from './order-form/order-form.component';
 import { CustomTableComponent } from './custom-table/custom-table.component';
 import { ContentEditModelDirective } from './content-edit-model.directive';
+import { SignupComponent } from './signup/signup.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { ContentEditModelDirective } from './content-edit-model.directive';
     OrderFormComponent,
     CustomTableComponent,
     ContentEditModelDirective,
+    SignupComponent,
 
   ],
   imports: [
