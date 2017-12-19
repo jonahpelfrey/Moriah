@@ -12,29 +12,11 @@ import { Observable } from 'rxjs/Observable';
 })
 export class OrderFormComponent implements OnInit {
 
-	private artistList: Observable<Artist[]> ;
-	private buyerList: Observable<Buyer[]>  ;
-	private volunteerList: Observable<Volunteer[]> ;
-	private orderId: number;
-	private artist: Artist;
-	private buyer: Buyer;
-	private volunteer: Volunteer;
-	private order: Order;
-	private purchase: Purchase;
-	private search: Object = {};
-	
-	public date: Date;
-	public time: Date;
-	
-	results: Object;
-	searchTerm$ = new Subject<string>();
 
 	constructor(private data:DataService) { }
 
 	ngOnInit() {
-		this.artistList = this.data.artistsObs;
-		this.buyerList = this.data.buyersObs;
-		this.volunteerList = this.data.volunteersObs;
+
 	}
 
 }

@@ -1,55 +1,100 @@
-<div class="container">
-	<h1>Order Form</h1>
-	<div class="row">
-		
-		<div class="col-sm-6">
-			<form #orderForm="ngForm">
-				<div class="form-group"> 
-					<label for="firstName"> Buyer Name</label>
-					<input type="text" class="form-control" id="name" 
-						required
-						[(ngModel)]="search.buyerName" name="name">
-				</div>
-
-				<div class="form-group"> 
-					<label for="firstName">Artist Name</label>
-					<input type="text" class="form-control" id="name" 
-						required
-						[(ngModel)]="search.artistName" name="firstName">
-				</div>
-				<div class="form-group"> 
-					<label for="firstName"> Volunteer Name</label>
-					<input type="text" class="form-control" id="name" 
-						required
-						[(ngModel)]="search.volunteerName" name="firstName">
-				</div>
-
-			<!--	<div class="form-group">
-					<label for="buyer">Buyer</label>
-					<select class="form-control" id="buyer" required>
-						<option *ngFor="let buyer of buyers" [value]="buyer">{{buyer}}</option>
-					</select>
-				</div>
-
-				<div class="form-group">
-					<label for="artist">Artist</label>
-					<select class="form-control" id="artist" required>
-						<option *ngFor="let artist of artists" [value]="artist">{{artist}}</option>
-					</select>
-				</div>
-
-				<div class="form-group">
-					<label for="Volunteer">Artist</label>
-					<select class="form-control" id="volunteer" required>
-						<option *ngFor="let volunteer of volunteers" [value]="volunteer">{{volunteer}}</option>
-					</select>
-				</div>
-				-->
-
-				<button type="submit" class="btn btn-success">Submit</button>
-			</form>
-		</div>
-
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">Create Order</h3>
 	</div>
-	
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-sm-12">
+				<ul class="nav nav-tabs">
+				  <li class="active"><a href="#buyer" data-toggle="tab" aria-expanded="true">Buyer</a></li>
+				  <li class=""><a href="#artist" data-toggle="tab" aria-expanded="false">Artist</a></li>
+				  <li class="dropdown">
+				    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+				      Options<span class="caret"></span>
+				    </a>
+				    <ul class="dropdown-menu">
+				      <li><a href="#dropdown1" data-toggle="tab">Action</a></li>
+				      <li class="divider"></li>
+				      <li><a href="#dropdown2" data-toggle="tab">Another action</a></li>
+				    </ul>
+				  </li>
+				</ul>
+				<div id="myTabContent" class="tab-content" style="padding-top: 20px;">
+				  	<div class="tab-pane fade active in" id="buyer">
+			  			<div class="form-group">
+						  <input class="form-control" type="text" id="inputDefault" placeholder="Search">
+						</div>
+				  	<table class="table table-striped table-hover ">
+					  <thead>
+					    <tr>
+					      <th>ID</th>
+					      <th>Name</th>
+					      <th>Email</th>
+					      <th>Options</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr>
+					      <td>4</td>
+					      <td>Column content</td>
+					      <td>Column content</td>
+					      <td><button class="btn btn-warning">Add</button></td>
+					    </tr>
+					  </tbody>
+					</table> 
+				  </div>
+				  <div class="tab-pane fade" id="artist">
+				   
+				  </div>
+				  <div class="tab-pane fade" id="dropdown1">
+				   
+				  </div>
+				  <div class="tab-pane fade" id="dropdown2">
+				   
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="panel panel-success">
+	<div class="panel-heading">
+		<h3 class="panel-title">Ticket</h3>
+	</div>
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="list-group">
+				  <div class="list-group-item">
+				    <h5 class="list-group-item-heading">Order ID</h5>
+				    <p class="list-group-item-text">sd7f8979234</p>
+				  </div>
+				</div>
+			</div>
+			<div class="col-sm-4" style="text-align: center;">
+				<div class="panel panel-default">
+					<div class="panel-heading">Buyer ID</div>
+					<div class="panel-body">
+						
+					</div>
+					<div class="btn-group btn-group-justified">
+							<a href="#" class="btn btn-success">Confirm</a>
+							<a href="#" class="btn btn-danger">Remove</a>
+						</div>
+				</div>
+			</div>
+			<div class="col-sm-4" style="text-align: center;">
+				<div class="list-group">
+				  <div class="list-group-item">
+				    <h5 class="list-group-item-heading">Artist ID</h5>
+				    <p class="list-group-item-text">sd7f8979234</p>
+				  </div>
+				</div>
+				<div class="row">
+					<button class="btn btn-danger">Remove</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
