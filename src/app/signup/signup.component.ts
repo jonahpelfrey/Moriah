@@ -9,7 +9,7 @@ import { Buyer } from '../models/models';
 })
 export class SignupComponent implements OnInit {
 
-	states: string[] = [
+	readonly states: string[] = [
 		"Alabama",
 		"Alaska",
 		"Arizona",
@@ -77,15 +77,15 @@ export class SignupComponent implements OnInit {
 
 	receiveEmails: boolean = false;
 
-	
-
 	constructor() { }
 
   	ngOnInit() {
   	}
 
   	register(){
-  		
+  		//Add user to database
+
+  		//If receiveEmails, add user to mailing list
   	}
 
 }
