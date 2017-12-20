@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Buyer } from '../models/models';
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -60,9 +62,30 @@ export class SignupComponent implements OnInit {
 		"Wyoming"
 	];
 
+	newMember: Buyer = {
+		firstName: "",
+		lastName: "",
+		address: {
+			street: "",
+			city: "",
+			state: "",
+			zip: ""
+		},
+		phoneNumber: "",
+		email: ""
+	};
+
+	receiveEmails: boolean = false;
+
+	
+
 	constructor() { }
 
   	ngOnInit() {
+  	}
+
+  	register(){
+  		
   	}
 
 }

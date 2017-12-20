@@ -18,9 +18,9 @@ export interface Buyer {
 		street: string;
 		city: string;
 		state: string;
-		zip: number;
+		zip: string;
 	};
-	phoneNumber: number;
+	phoneNumber: string;
 	email: string;
 }
 

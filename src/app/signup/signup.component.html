@@ -7,16 +7,16 @@
 		<div class="row" style="color: #2196f3;">
 			<div class="col-sm-12">
 				<div class="form-group">
-				  <label class="control-label" for="inputDefault">First Name</label>
-				  <input type="text" class="form-control" id="inputDefault" placeholder="John">
+				  <label class="control-label" for="inputFirstName">First Name</label>
+				  <input type="text" class="form-control" [(ngModel)]="newMember.firstName" id="inputFirstName" placeholder="John">
 				</div>
 			</div>
 		</div>
 		<div class="row" style="color: #2196f3;">
 			<div class="col-sm-12">
 				<div class="form-group">
-				  <label class="control-label" for="inputDefault">Last Name</label>
-				  <input type="text" class="form-control" id="inputDefault" placeholder="Doe">
+				  <label class="control-label" for="inputLastName">Last Name</label>
+				  <input type="text" class="form-control" [(ngModel)]="newMember.lastName" id="inputLastName" placeholder="Doe">
 				</div>
 			</div>
 		</div>
@@ -26,13 +26,13 @@
 				  <label class="control-label" for="inputDefault">Phone Number</label>
 				  <div class="row">
 				  	<div class="col-xs-4">
-				  		<input type="text" class="form-control" id="inputDefault" maxlength="3" placeholder="(###)" style="text-align: center;">
+				  		<input type="number" class="form-control" id="inputDefault" maxlength="3" placeholder="(###)" style="text-align: center;">
 				  	</div>
 				  	<div class="col-xs-4">
-				  		<input type="text" class="form-control" id="inputDefault" maxlength="3" placeholder="###" style="text-align: center;">
+				  		<input type="number" class="form-control" id="inputDefault" maxlength="3" placeholder="###" style="text-align: center;">
 				  	</div>
 				  	<div class="col-xs-4">
-				  		<input type="text" class="form-control" id="inputDefault" maxlength="4" placeholder="####" style="text-align: center;">
+				  		<input type="number" class="form-control" id="inputDefault" maxlength="4" placeholder="####" style="text-align: center;">
 				  	</div>
 				  </div>
 				</div>
@@ -42,7 +42,7 @@
 			<div class="col-sm-12">
 				<div class="form-group">
 				  <label class="control-label" for="inputDefault">Email</label>
-				  <input type="text" class="form-control" id="inputDefault" placeholder="johndoe@gmail.com">
+				  <input type="number" class="form-control" [(ngModel)]="newMember.email" id="inputDefault" placeholder="johndoe@gmail.com">
 				</div>
 			</div>
 		</div>
@@ -52,25 +52,20 @@
 				  <label class="control-label" for="inputDefault">Address</label>
 				  <div class="row">
 				  	<div class="col-sm-12">
-				  		<input type="text" class="form-control" id="inputDefault" placeholder="Street">
-				  	</div>
-				  </div>
-				  <div class="row">
-				  	<div class="col-sm-12">
-				  		<input type="text" class="form-control" id="inputDefault" placeholder="Apt #">
+				  		<input type="text" class="form-control" [(ngModel)]="newMember.address.street" id="inputDefault" placeholder="Street">
 				  	</div>
 				  </div>
 				  <div class="row">
 				  	<div class="col-xs-4">
-				  		<input type="text" class="form-control" id="inputDefault" placeholder="City">
+				  		<input type="text" class="form-control" [(ngModel)]="newMember.address.city" id="inputDefault" placeholder="City">
 				  	</div>
 				  	<div class="col-xs-4">
-				  		<select class="form-control" id="select">
+				  		<select class="form-control" id="select" [(ngModel)]="newMember.address.state">
 				          <option *ngFor="let state of states">{{state}}</option>
 				        </select>
 				  	</div>
 				  	<div class="col-xs-4">
-				  		<input type="text" class="form-control" id="inputDefault" placeholder="Zipcode">
+				  		<input type="number" class="form-control" [(ngModel)]="newMember.address.zip" id="inputDefault" placeholder="Zipcode">
 				  	</div>
 				  </div>
 				</div>
@@ -80,7 +75,7 @@
 			<div class="col-sm-12">
 				<div class="checkbox">
 		          <label>
-		            <input type="checkbox">I want to receive emails about future Moriah Art Fairs
+		            <input type="checkbox" [(ngModel)]="receiveEmails">I want to receive emails about future Moriah Art Fairs
 		          </label>
 		        </div>
 	    	</div>
