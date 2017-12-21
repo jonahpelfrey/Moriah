@@ -7,6 +7,8 @@ import { Volunteer } from './models/models';
 export class AuthService {
 
 	worker: Volunteer;
+	role: any;
+	loggedIn: boolean = false;
 
 	constructor() { }
 
