@@ -5,90 +5,95 @@
 		</div>
 		<div class="panel-body">
 			<h5 style="text-align: center;">Personal Information</h5>
-			<div class="row" style="color: #2196f3;">
-				<div class="col-sm-12">
-					<div class="form-group">
-					  <label class="control-label" for="inputFirstName">First Name</label>
-					  <input type="text" class="form-control" [(ngModel)]="newMember.firstName" id="inputFirstName" placeholder="John">
+			<form [formGroup]="myForm"
+				(ngSubmit)="onSubmit(myForm.value)"
+				class="ui form">
+				<div class="row" style="color: #2196f3;">
+					<div class="col-sm-12">
+						<div class="form-group">
+						  <label class="control-label" for="inputFirstName">First Name</label>
+						  <input type="text" class="form-control" [(ngModel)]="newMember.firstName" id="inputFirstName" placeholder="John" [formControl]="myForm.controls['firstName']">
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="row" style="color: #2196f3;">
-				<div class="col-sm-12">
-					<div class="form-group">
-					  <label class="control-label" for="inputLastName">Last Name</label>
-					  <input type="text" class="form-control" [(ngModel)]="newMember.lastName" id="inputLastName" placeholder="Doe">
+				<div class="row" style="color: #2196f3;">
+					<div class="col-sm-12">
+						<div class="form-group">
+						  <label class="control-label" for="inputLastName">Last Name</label>
+						  <input type="text" class="form-control" [(ngModel)]="newMember.lastName" id="inputLastName" placeholder="Doe" [formControl]="myForm.controls['lastName']">
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="row" style="color: #2196f3;">
-				<div class="col-sm-12">
-					<div class="form-group">
-					  <label class="control-label" for="inputDefault">Phone Number</label>
-					  <div class="row">
-					  	<div class="col-xs-4">
-					  		<input type="number" class="form-control" id="inputFirstDigits" maxlength="3" placeholder="(###)">
-					  	</div>
-					  	<div class="col-xs-4">
-					  		<input type="number" class="form-control" id="inputDefault" maxlength="3" placeholder="###" style="text-align: center;">
-					  	</div>
-					  	<div class="col-xs-4">
-					  		<input type="number" class="form-control" id="inputDefault" maxlength="4" placeholder="####" style="text-align: center;">
-					  	</div>
-					  </div>
+				<div class="row" style="color: #2196f3;">
+					<div class="col-sm-12">
+						<div class="form-group">
+						  <label class="control-label" for="inputDefault">Phone Number</label>
+						  <div class="row">
+						  	<div class="col-xs-4">
+						  		<input type="number" class="form-control" id="inputFirstDigits" maxlength="3" placeholder="(###)" [formControl]="myForm.controls['phoneNumber']">
+						  	</div>
+						  	<div class="col-xs-4">
+						  		<input type="number" class="form-control" id="inputDefault" maxlength="3" placeholder="###" style="text-align: center;" [formControl]="myForm.controls['phoneNumber']">
+						  	</div>
+						  	<div class="col-xs-4">
+						  		<input type="number" class="form-control" id="inputDefault" maxlength="4" placeholder="####" style="text-align: center;" [formControl]="myForm.controls['phoneNumber']">
+						  	</div>
+						  </div>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="row" style="color: #2196f3;">
-				<div class="col-sm-12">
-					<div class="form-group">
-					  <label class="control-label" for="inputDefault">Email</label>
-					  <input type="number" class="form-control" [(ngModel)]="newMember.email" id="inputDefault" placeholder="johndoe@gmail.com">
+				<div class="row" style="color: #2196f3;">
+					<div class="col-sm-12">
+						<div class="form-group">
+						  <label class="control-label" for="inputDefault">Email</label>
+						  <input type="number" class="form-control" [(ngModel)]="newMember.email" id="inputDefault" placeholder="johndoe@gmail.com" [formControl]="myForm.controls['email']">
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="row" style="color: #2196f3;">
-				<div class="col-sm-12">
-					<div class="form-group">
-					  <label class="control-label" for="inputDefault">Address</label>
-					  <div class="row">
-					  	<div class="col-sm-12">
-					  		<input type="text" class="form-control" [(ngModel)]="newMember.address.street" id="inputDefault" placeholder="Address Line 1">
-					  	</div>
-					  	<div class="col-sm-12">
-					  		<input type="text" class="form-control" [(ngModel)]="newMember.address.street" id="inputDefault" placeholder="Address Line 2">
-					  	</div>
-					  </div>
-					  <div class="row">
-					  	<div class="col-xs-4">
-					  		<input type="text" class="form-control" [(ngModel)]="newMember.address.city" id="inputDefault" placeholder="City">
-					  	</div>
-					  	<div class="col-xs-4">
-					  		<select class="form-control" id="select" [(ngModel)]="newMember.address.state">
-					          <option *ngFor="let state of states">{{state}}</option>
-					        </select>
-					  	</div>
-					  	<div class="col-xs-4">
-					  		<input type="number" class="form-control" [(ngModel)]="newMember.address.zip" id="inputDefault" placeholder="Zipcode">
-					  	</div>
-					  </div>
+				<div class="row" style="color: #2196f3;">
+					<div class="col-sm-12">
+						<div class="form-group">
+						  <label class="control-label" for="inputDefault">Address</label>
+						  <div class="row">
+						  	<div class="col-sm-12">
+						  		<input type="text" class="form-control" [(ngModel)]="newMember.address.street" id="inputDefault" placeholder="Address Line 1" [formControl]="myForm.controls['street']" >
+						  	</div>
+						  	<div class="col-sm-12">
+						  		<input type="text" class="form-control" [(ngModel)]="newMember.address.street" id="inputDefault" placeholder="Address Line 2" [formControl]="myForm.controls['street']" >
+						  	</div>
+						  </div>
+						  <div class="row">
+						  	<div class="col-xs-4">
+						  		<input type="text" class="form-control" [(ngModel)]="newMember.address.city" id="inputDefault" placeholder="City" [formControl]="myForm.controls['city']">
+						  	</div>
+						  	<div class="col-xs-4">
+						  		<select class="form-control" style="color: #BBBBBB" id="select" [(ngModel)]="newMember.address.state">
+						  			<option value="" disabled="true" >State</option>
+						          <option  *ngFor="let state of states">{{state}}</option>
+						        </select>
+						  	</div>
+						  	<div class="col-xs-4">
+						  		<input type="number" class="form-control" [(ngModel)]="newMember.address.zip" id="inputDefault" placeholder="Zipcode" [formControl]="myForm.controls['zip']" >
+						  	</div>
+						  </div>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="row" style="padding-top: 20px;">
-				<div class="col-sm-12">
-					<div class="checkbox">
-			          <label>
-			            <input type="checkbox" [(ngModel)]="receiveEmails">I want to receive emails about future Moriah Art Fairs
-			          </label>
-			        </div>
-		    	</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-12">
-					<button class="btn btn-success btn-lg btn-block">Register</button>
+				<div class="row" style="padding-top: 20px;">
+					<div class="col-sm-12">
+						<div class="checkbox">
+				          <label>
+				            <input type="checkbox" [(ngModel)]="receiveEmails">I want to receive emails about future Moriah Art Fairs
+				          </label>
+				        </div>
+			    	</div>
 				</div>
-			</div>
+				<div class="row">
+					<div class="col-xs-12">
+						<button class="btn btn-success btn-lg btn-block">Register</button>
+					</div>
+				</div>
+			</form>
 		</div>
 	</div>
 </div>

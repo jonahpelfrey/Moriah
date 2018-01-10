@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 import { Buyer } from '../models/models';
 
@@ -75,9 +77,13 @@ export class SignupComponent implements OnInit {
 		email: ""
 	};
 
+	myForm: FormGroup;
+
 	receiveEmails: boolean = false;
 
-	constructor() { }
+	constructor(fb: FormBuilder) { 
+		this.myForm = fb.group){this.newMember}
+	}
 
   	ngOnInit() {
   	}
@@ -86,6 +92,20 @@ export class SignupComponent implements OnInit {
   		//Add user to database
 
   		//If receiveEmails, add user to mailing list
+
+
+  		/*let regiserInputs = new FormGroup({
+  			firstName: new FormControl(this.newMember.firstName),
+  			lastame: new FormControl(this.newMember.lastName),
+  			address: new FormControl(this.newMember.address),
+  			phoneNumber: new FormControl(this.newMember.phoneNumber),
+  			email: new FormControl(this.newMember.email)
+
+  		}) */
+
+  		onSubmit(form: any): void {
+  			
+  		}
   	}
 
 }
