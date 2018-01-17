@@ -18,6 +18,8 @@ import { OrderFormComponent } from './order-form/order-form.component';
 import { CustomTableComponent } from './custom-table/custom-table.component';
 import { SignupComponent } from './signup/signup.component';
 import { AdminComponent } from './admin/admin.component';
+import { CashierComponent } from './cashier/cashier.component';
+import { RoleComponent } from './role/role.component';
 
 
 @NgModule({
@@ -28,6 +30,8 @@ import { AdminComponent } from './admin/admin.component';
     CustomTableComponent,
     SignupComponent,
     AdminComponent,
+    CashierComponent,
+    RoleComponent,
 
   ],
   imports: [

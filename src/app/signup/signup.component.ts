@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormControl, Validators, FormBuilder, NgForm } from '@angular/forms';
 
-import { Buyer } from '../models/models';
+import { Buyer, PhoneNumber, ApiResponse } from '../models/models';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-signup',
@@ -64,11 +65,19 @@ export class SignupComponent implements OnInit {
 		"Wyoming"
 	];
 
+	receiveEmails: boolean = false;
+	phoneNumber: PhoneNumber = {
+		first: "",
+		second: "",
+		third: ""
+	};
+
 	newMember: Buyer = {
 		firstName: "",
 		lastName: "",
 		address: {
-			street: "",
+			first: "",
+			second: "",
 			city: "",
 			state: "",
 			zip: "",		
@@ -77,67 +86,36 @@ export class SignupComponent implements OnInit {
 		email: ""
 	};
 
-
-	myForm: FormGroup = null;
-
-
-	receiveEmails: boolean = false;
-
-	constructor(fb: FormBuilder) { 
-		this.myForm = fb.group({
-			'firstName': ['', Validators.required],
-			'lastName': ['', Validators.required], 
-			'street': ['', Validators.required],
-			'city': ['', Validators.required],
-			'zip': ['', Validators.required],
-			'phoneNumber1': ['', Validators.required],
-			'phoneNumber2': ['', Validators.required],
-			'phoneNumber3': ['', Validators.required],
-			'email': ['', Validators.required]
-		}); 
-
-		//var _builder = new FormBuilder();
-		//this.myForm = _builder.group({});
-		//this.formGroup.addControl('firstName', new FormControl('',Validators.required));
-
-	/*	var validationcollection = [];
-		validationcollection.push(Validators.required);
-		validationcollection.push(Validators.pattern("^[A-Z]{1,1[0-9]{4,4}$")); */
-
-/*		this.newMember.firstName = this.myForm.controls['firstName'];
-		this.newMember.lastName = this.myForm.controls['lastName'];
-		this.newMember.address.street = this.myForm.controls['street'];
-		this.newMember.address.city = this.myForm.controls['city'];
-		this.newMember.address.zip = this.myForm.controls['zip'];
-		this.newMember.phoneNumber1 = this.myForm.controls['phoneNumber1'];
-		this.newMember.phoneNumber2 = this.myForm.controls['phoneNumber2'];
-		this.newMember.phoneNumber3 = this.myForm.controls['phoneNumber3'];
-		this.newMember.email = this.myForm.controls['email']; 
-*/
-
-		/*this.myForm.addControl('street', new FormControl('', Validators.compose(Validators.Validators.required))));
-		this.myForm.addControl('address.city', new FormControl('', Validators.compose(Validators.required)));
-		this.myForm.addControl('address.zip', new FormControl('', Validators.compose(Validators.required)));
-		this.myForm.addControl('phoneNumber1', new FormControl('', Validators.compose(Validators.required)));
-		this.myForm.addControl('phoneNumber2', new FormControl('', Validators.compose(Validators.required)));
-		this.myForm.addControl('phoneNumber3', new FormControl('', Validators.compose(Validators.required)));
-		this.myForm.addControl('email', new FormControl('', Validators.compose(Validators.required)))); */
-
-	}
+	constructor(private dataService: DataService) {}
 
   	ngOnInit() {
   	}
 
-  	register(){
-  		//Add user to database
-
-  		//If receiveEmails, add user to mailing list
-
-  		
+  	formatPhoneNumber() {
+  		return this.phoneNumber.first + this.phoneNumber.second + this.phoneNumber.third;
   	}
 
-  	onSubmit(form: any) {
-  		console.log("you registered with value: ", form)		
+  	register(){
+  		this.newMember.phoneNumber = this.formatPhoneNumber();
+
+  		this.dataService.addBuyer(this.newMember).subscribe(
+  			data => {
+  				if(data.error) { this.handleErrorResponse(data.error); } 
+  				else { this.handleSuccessResponse(data); }
+  			},
+  			err => {
+  				console.log(err);
+  				this.handleErrorResponse("There was an internal error processing your request");
+  			}
+  		);
+  	}
+
+  	handleErrorResponse(message: string){
+  		console.log(message);
+  	}
+
+  	handleSuccessResponse(data: ApiResponse){
+  		console.log(data);
   	}
 
 }

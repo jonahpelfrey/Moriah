@@ -1,28 +1,17 @@
 import { Injectable } from '@angular/core';
-
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Roles } from './models/roles';
-import { Volunteer } from './models/models';
+import { Volunteer, User, Member } from './models/models';
 
 @Injectable()
 export class AuthService {
 
-	worker: Volunteer;
-	role: any;
-	loggedIn: boolean = false;
+	constructor(private http: HttpClient) { }
 
-	constructor() { }
-
-	login(username: string, password: string){
-
-		//Hash password
-
-		//Send username and password to backend to validate login
-
-		//If successful, return true
-	}
-
-	logout(){
-
+	loadUserTable(ref: string){
+		return this.http.get<Member[]>('http://localhost:8080/api/list/' + ref);
 	}
 
 }

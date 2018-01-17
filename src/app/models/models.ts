@@ -15,7 +15,8 @@ export interface Buyer {
 	firstName: string;
 	lastName: string;
 	address: {
-		street: string;
+		first: string;
+		second: string;
 		city: string;
 		state: string;
 		zip: string;
@@ -45,6 +46,33 @@ export interface Purchase {
 	notes: string;
 	paid: boolean;
 	
+}
+
+export interface User {
+	username: string;
+	password: string;
+}
+
+export interface PhoneNumber {
+	first: string;
+	second: string;
+	third: string;
+}
+
+export interface ApiResponse {
+	message: string;
+	error: string;
+	result: any;
+}
+
+export interface Member {
+	firstName: string;
+	lastName: string;
+}
+
+export interface Role {
+	name: string;
+	ref: string;
 }
 
 

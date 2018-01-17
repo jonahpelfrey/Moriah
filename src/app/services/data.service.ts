@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
-import { Artist, Volunteer, Buyer, Order } from '../models/models';
+import { Artist, Volunteer, Buyer, Order, ApiResponse } from '../models/models';
 
 @Injectable()
 export class DataService {
@@ -42,6 +42,10 @@ export class DataService {
 			this.artists.next(this.artistList);
 		}, err => console.log(err));
   	}
+
+    addBuyer(buyer: Buyer) {
+      return this.http.post<ApiResponse>('http://localhost:8080/api/buyers', buyer);
+    }
 
   	getBuyers() {
   		this.http.get<Buyer[]>('https://afmws.herokuapp.com/api/buyers').subscribe(res => {

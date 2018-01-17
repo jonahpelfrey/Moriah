@@ -5,13 +5,11 @@
 		</div>
 		<div class="panel-body">
 			<h5 style="text-align: center;">Personal Information</h5>
-			<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)"
-				class="ui form">
 				<div class="row" style="color: #2196f3;">
 					<div class="col-sm-12">
 						<div class="form-group">
 						  <label class="control-label" for="inputFirstName">First Name</label>
-						  <input type="text" class="form-control" [(ngModel)]="newMember.firstName" id="inputFirstName" placeholder="John" formControlName="firstName">
+						  <input type="text" class="form-control" [(ngModel)]="newMember.firstName" id="inputFirstName" placeholder="John">
 						</div>
 					</div>
 				</div>
@@ -19,7 +17,7 @@
 					<div class="col-sm-12">
 						<div class="form-group">
 						  <label class="control-label" for="inputLastName">Last Name</label>
-						  <input type="text" class="form-control" [(ngModel)]="newMember.lastName" id="inputLastName" placeholder="Doe" formControlName="lastName">
+						  <input type="text" class="form-control" [(ngModel)]="newMember.lastName" id="inputLastName" placeholder="Doe">
 						</div>
 					</div>
 				</div>
@@ -29,13 +27,13 @@
 						  <label class="control-label" for="inputDefault">Phone Number</label>
 						  <div class="row">
 						  	<div class="col-xs-4">
-						  		<input type="number" class="form-control" id="inputFirstDigits" maxlength="3" placeholder="(###)" formControlName="phoneNumber1">
+						  		<input type="text" class="form-control" id="inputFirstDigits" maxlength="3" placeholder="(###)" [(ngModel)]="phoneNumber.first">
 						  	</div>
 						  	<div class="col-xs-4">
-						  		<input type="number" class="form-control" id="inputDefault" maxlength="3" placeholder="###" style="text-align: center;" formControlName="phoneNumber2">
+						  		<input type="text" class="form-control" id="inputDefault" maxlength="3" placeholder="###" style="text-align: center;" [(ngModel)]="phoneNumber.second">
 						  	</div>
 						  	<div class="col-xs-4">
-						  		<input type="number" class="form-control" id="inputDefault" maxlength="4" placeholder="####" style="text-align: center;" formControlName="phoneNumber3">
+						  		<input type="text" class="form-control" id="inputDefault" maxlength="4" placeholder="####" style="text-align: center;" [(ngModel)]="phoneNumber.third">
 						  	</div>
 						  </div>
 						</div>
@@ -45,7 +43,7 @@
 					<div class="col-sm-12">
 						<div class="form-group">
 						  <label class="control-label" for="inputDefault">Email</label>
-						  <input type="text" class="form-control" [(ngModel)]="newMember.email" id="inputDefault" placeholder="johndoe@gmail.com" formControlName="email">
+						  <input type="text" class="form-control" [(ngModel)]="newMember.email" id="inputDefault" placeholder="johndoe@gmail.com">
 						</div>
 					</div>
 				</div>
@@ -55,15 +53,17 @@
 						  <label class="control-label" for="inputDefault">Address</label>
 						  <div class="row">
 						  	<div class="col-sm-12">
-						  		<input type="text" class="form-control" [(ngModel)]="newMember.address.street" id="inputDefault" placeholder="Address Line 1"  formControlName="street" required>
+						  		<input type="text" class="form-control" [(ngModel)]="newMember.address.first" id="inputDefault" placeholder="Address Line 1" required>
 						  	</div>
+						  </div>
+						  <div class="row">
 						  	<div class="col-sm-12">
-						  		<input type="text" class="form-control" [(ngModel)]="newMember.address.street" id="inputDefault" placeholder="Address Line 2">
+						  		<input type="text" class="form-control" [(ngModel)]="newMember.address.second" id="inputDefault" placeholder="Address Line 2" required>
 						  	</div>
 						  </div>
 						  <div class="row">
 						  	<div class="col-xs-4">
-						  		<input type="text" class="form-control" [(ngModel)]="newMember.address.city" id="inputDefault" placeholder="City" formControlName="city">
+						  		<input type="text" class="form-control" [(ngModel)]="newMember.address.city" id="inputDefault" placeholder="City">
 						  	</div>
 						  	<div class="col-xs-4">
 						  		<select class="form-control" style="color: #BBBBBB" id="select" [(ngModel)]="newMember.address.state">
@@ -71,7 +71,7 @@
 						        </select>
 						  	</div>
 						  	<div class="col-xs-4">
-						  		<input type="number" class="form-control" [(ngModel)]="newMember.address.zip" id="inputDefault" placeholder="Zipcode"  formControlName="zip" >
+						  		<input type="number" class="form-control" [(ngModel)]="newMember.address.zip" id="inputDefault" placeholder="Zipcode">
 						  	</div>
 						  </div>
 						</div>
@@ -88,10 +88,9 @@
 				</div>
 				<div class="row">
 					<div class="col-xs-12">
-						<button class="btn btn-success btn-lg btn-block" [disabled]="!myForm.valid">Register</button>
+						<button class="btn btn-success btn-lg btn-block" (click)="register()">Register</button>
 					</div>
 				</div>
-			</form>
 		</div>
 	</div>
 </div>
