@@ -14,4 +14,8 @@ export class AuthService {
 		return this.http.get<Member[]>('http://localhost:8080/api/list/' + ref);
 	}
 
+	userLogin(requestBody){
+		return this.http.post<any>('http://localhost:8080/api/profile/login', requestBody);
+	}
+
 }

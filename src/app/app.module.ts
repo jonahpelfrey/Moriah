@@ -20,6 +20,8 @@ import { SignupComponent } from './signup/signup.component';
 import { AdminComponent } from './admin/admin.component';
 import { CashierComponent } from './cashier/cashier.component';
 import { RoleComponent } from './role/role.component';
+import { InvoiceComponent } from './invoice/invoice.component';
+import { MainComponent } from './main/main.component';
 
 
 @NgModule({
@@ -32,6 +34,8 @@ import { RoleComponent } from './role/role.component';
     AdminComponent,
     CashierComponent,
     RoleComponent,
+    InvoiceComponent,
+    MainComponent,
 
   ],
   imports: [

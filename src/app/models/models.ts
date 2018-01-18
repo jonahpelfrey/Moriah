@@ -68,6 +68,7 @@ export interface ApiResponse {
 export interface Member {
 	firstName: string;
 	lastName: string;
+	_id: string;
 }
 
 export interface Role {
