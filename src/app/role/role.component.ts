@@ -10,8 +10,8 @@ import { User, Role } from '../models/models';
 })
 export class RoleComponent implements OnInit {
 
-	private users: Array<User> = [];
-	private selectedUser: User;
+	users: Array<User> = [];
+	selectedUser: User;
 
 	roles: Array<Role> = [
 		{name: "Administrator", ref: "admins"},
