@@ -12,10 +12,10 @@ import { TableForm } from '../models/table-form';
 
 export class CustomTableComponent implements OnInit {
 
-	private rows: TableRow[] = [];
-	private columns: Array<String> = [];
+	rows: TableRow[] = [];
+	columns: Array<String> = [];
 
-	private selectedRow: TableRow;
+	selectedRow: TableRow;
 
 	@Input()
 	set data(data: TableForm) {
