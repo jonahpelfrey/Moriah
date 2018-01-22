@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from './services/data.service';
+import { AuthService } from './auth.service';
 
 import { TableForm } from './models/table-form';
 
@@ -10,37 +11,37 @@ import { TableForm } from './models/table-form';
 })
 
 export class AppComponent {
-  title = 'app';
+  	title = 'app';
+  	private loggedIn: boolean = false;
 
-  private tableForm: TableForm = new TableForm();
+  	private tableForm: TableForm = new TableForm();
 
-  private myObject = {
-  	name: "Jim",
-  	age: "30",
-  	occupation: "Software Engineer",
-  	email: "jim@gmail.com"
-  };
+  	private myObject = {
+  		name: "Jim",
+  		age: "30",
+  		occupation: "Software Engineer",
+  		email: "jim@gmail.com"
+  	};
 
-  private myOtherObject = {
-  	name: "Nancy",
-  	age: "35",
-  	occupation: "Mechanical Engineer",
-  	email: "nancy@gmail.com"
-  };
+  	private myOtherObject = {
+  		name: "Nancy",
+  		age: "35",
+  		occupation: "Mechanical Engineer",
+  		email: "nancy@gmail.com"
+  	};
 
-  private myOthersObject = {
-    name: "Tony",
-    age: "40",
-    occupation: "Civil Engineer",
-    email: "tony@gmail.com"
-  };
+  	private myOthersObject = {
+    	name: "Tony",
+    	age: "40",
+    	occupation: "Civil Engineer",
+    	email: "tony@gmail.com"
+  	};
 
-  constructor(private dataService: DataService) {}
+  	constructor(private dataService: DataService, private auth: AuthService) {}
 
-  ngOnInit() {
-  	this.dataService.getArtists();
-
-    this.tableForm.columns.push("Name", "Age", "Occupation", "Email");
-    this.tableForm.rows.push(this.myObject, this.myOtherObject, this.myOthersObject);
-  }
+  	ngOnInit() {
+  		this.dataService.getArtists();
+    	this.tableForm.columns.push("Name", "Age", "Occupation", "Email");
+    	this.tableForm.rows.push(this.myObject, this.myOtherObject, this.myOthersObject);
+  	}
 }

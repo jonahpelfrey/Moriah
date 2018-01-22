@@ -12,6 +12,7 @@ import { DataService } from './services/data.service';
 import { SearchService } from './services/search.service';
 import { FormService } from './services/form.service';
 import { AuthService } from './auth.service';
+import { ModelService } from './model.service';
 
 import { LoginComponent } from './login/login.component';
 import { OrderFormComponent } from './order-form/order-form.component';
@@ -45,7 +46,7 @@ import { MainComponent } from './main/main.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [DataService, SearchService, FormService, AuthService],
+  providers: [DataService, SearchService, FormService, AuthService, ModelService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

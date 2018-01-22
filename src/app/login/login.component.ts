@@ -9,24 +9,9 @@ import { User } from '../models/models';
 })
 export class LoginComponent implements OnInit {
 
-	user: User = {
-		username: "",
-		password: ""
-	};
-
 	constructor(private auth: AuthService) { }
 
   	ngOnInit() {
-  	}
-
-  	login(): void {
-  		if(this.user.username === "Moriah" && this.user.password === "md2018t!!"){
-  			console.log("Logged in successfully");
-  			this.user.username = "";
-  			this.user.password = "";
-  		} else {
-  			console.log("That username and password combination is incorrect");
-  		}
   	}
 
 }

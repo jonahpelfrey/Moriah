@@ -48,11 +48,6 @@ export interface Purchase {
 	
 }
 
-export interface User {
-	username: string;
-	password: string;
-}
-
 export interface PhoneNumber {
 	first: string;
 	second: string;
@@ -65,10 +60,12 @@ export interface ApiResponse {
 	result: any;
 }
 
-export interface Member {
+export interface User {
 	firstName: string;
 	lastName: string;
 	_id: string;
+	role: string;
+	hasAuth: boolean;
 }
 
 export interface Role {

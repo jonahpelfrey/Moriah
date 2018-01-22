@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { Member, Role } from '../models/models';
+import { ModelService } from '../model.service';
+import { User, Role } from '../models/models';
 
 @Component({
   selector: 'app-role',
@@ -9,7 +10,8 @@ import { Member, Role } from '../models/models';
 })
 export class RoleComponent implements OnInit {
 
-	members: Array<Member> = [];
+	private users: Array<User> = [];
+	private selectedUser: User;
 
 	roles: Array<Role> = [
 		{name: "Administrator", ref: "admins"},
@@ -19,48 +21,115 @@ export class RoleComponent implements OnInit {
 		{name: "Order Writer", ref: "writers"}
 	];
 
-	selectedUser: Member = {firstName: "", lastName: "", _id: ""};
+	tempAdmins: Array<User> = [
+		{firstName: "Tom", lastName: "Johnson", _id: "123454", role: "admins", hasAuth: false},
+		{firstName: "Lisa", lastName: "Tenzer", _id: "123454", role: "admins", hasAuth: false},
+		{firstName: "Jonah", lastName: "Pelfrey", _id: "123454", role: "admins", hasAuth: false},
+		{firstName: "Greg", lastName: "Campbell", _id: "123454", role: "admins", hasAuth: false},
+	];
+
+	tempCashiers: Array<User> = [
+		{firstName: "Jane", lastName: "Doe", _id: "123454", role: "cashiers", hasAuth: false},
+		{firstName: "Jamie", lastName: "Rothberg", _id: "123454", role: "cashiers", hasAuth: false},
+		{firstName: "Robert", lastName: "Smith", _id: "123454", role: "cashiers", hasAuth: false},
+		{firstName: "Thomas", lastName: "Jefferson", _id: "123454", role: "cashiers", hasAuth: false},
+	];
+
+	tempOffice: Array<User> = [
+		{firstName: "Nick", lastName: "Kratchmer", _id: "123454", role: "office", hasAuth: false},
+		{firstName: "James", lastName: "Olson", _id: "123454", role: "office", hasAuth: false},
+		{firstName: "David", lastName: "Robinson", _id: "123454", role: "office", hasAuth: false},
+		{firstName: "Marshall", lastName: "Brown", _id: "123454", role: "office", hasAuth: false},
+	];
+
+	tempWriters: Array<User> = [
+		{firstName: "Alex", lastName: "Duchon", _id: "123454", role: "writers", hasAuth: false},
+		{firstName: "Jennifer", lastName: "Garner", _id: "123454", role: "writers", hasAuth: false},
+		{firstName: "Steve", lastName: "Tenzer", _id: "123454", role: "writers", hasAuth: false},
+		{firstName: "John", lastName: "Adams", _id: "123454", role: "writers", hasAuth: false},
+	];
+
+	tempArtists: Array<User> = [
+		{firstName: "Frank", lastName: "Kelly", _id: "123454", role: "artists", hasAuth: false},
+		{firstName: "Jim", lastName: "Hawthorne", _id: "123454", role: "artists", hasAuth: false},
+		{firstName: "Julia", lastName: "Sherek", _id: "123454", role: "artists", hasAuth: false},
+		{firstName: "Abby", lastName: "Pasiuk", _id: "123454", role: "artists", hasAuth: false},
+	];
+
+	tempUsers: Array<User> = [];
+
 	selectedRef: string = this.roles[0].ref;
 	password: string = "";
+	allowLogin: boolean = false;
 
-	constructor(private auth: AuthService) { }
+	constructor(private auth: AuthService, private modelService: ModelService) {}
 
-  	ngOnInit() {}
+  	ngOnInit() {this.selectedUser = this.modelService.emptyUser();}
 
   	attemptLogin(): void {
   		let requestBody = {id: this.selectedUser._id, password: this.password};
   		this.auth.userLogin(requestBody).subscribe(
-  			res => { this.loginSuccess(); }, 
-  			err => { this.loginError(err); }
+  			res => { this.loginSuccess(res); }, 
+  			err => { this.loginError(); }
   		);
   	}
 
   	loadUsers(): void {
   		this.auth.loadUserTable(this.selectedRef).subscribe(res => {
-  			this.members = this.sortMembers(res);
+  			this.users = this.sortUsers(res);
   		});
   	}
 
-  	loginError(error): void {
+  	loginError(): void {
   		this.password = "";
+  		this.selectedUser = this.modelService.emptyUser();
   		console.log("Failed to login");
   	}
 
-  	loginSuccess(): void {
+  	loginSuccess(result): void {
   		this.password = "";
-  		console.log("Logged in successfully");
+  		this.selectedUser = result.user;
+  		this.selectedUser.hasAuth = true;
+
+  		this.auth.setCurrentUser(this.selectedUser);
+  		console.log(this.selectedUser);
   	}
 
   	onSelect(event){
   		this.selectedRef = event.target.value;
-  		this.selectedUser = {firstName: "", lastName: "", _id: ""};
+  		this.selectedUser = this.modelService.emptyUser();
+  		this.allowLogin = false;
   	}
 
-  	selectMember(index: number): void {
-  		this.selectedUser = this.members[index];
+  	selectUser(index: number): void {
+  		this.selectedUser = this.users[index];
+  		this.allowLogin = true;
   	}
 
-  	sortMembers(values: Array<Member>): Array<Member> {
+  	tempSelectUser(index: number): void {
+  		this.selectedUser = this.tempUsers[index];
+  		this.allowLogin = true;
+  	}
+
+  	tempLoadUsers(): void {
+  		if(this.selectedRef === "admins"){
+  			this.tempUsers = this.sortUsers(this.tempAdmins);
+  		}
+  		else if(this.selectedRef === "artists"){
+  			this.tempUsers = this.sortUsers(this.tempArtists);
+  		} 
+  		else if(this.selectedRef === "cashiers"){
+  			this.tempUsers = this.sortUsers(this.tempCashiers);
+  		}
+  		else if(this.selectedRef === "office"){
+  			this.tempUsers = this.sortUsers(this.tempOffice);
+  		}
+  		else if(this.selectedRef === "writers"){
+  			this.tempUsers = this.sortUsers(this.tempWriters);
+  		}
+  	}
+
+  	sortUsers(values: Array<User>): Array<User> {
   		values.sort((a, b): number => {
   			if(a.lastName < b.lastName) { return -1; }
   			else if(a.lastName > b.lastName) { return 1; }
