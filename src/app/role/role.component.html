@@ -16,7 +16,7 @@
 	</div>
 	<div class="row" style="padding-top: 10px;">
 		<div class="col-xs-12 col-sm-6">
-			<a class="btn btn-primary btn-block" (click)="tempLoadUsers()">Search</a>
+			<a class="btn btn-primary btn-block" (click)="loadUsers()">Search</a>
 		</div>
 		<div class="col-sm-6 hidden-xs">
 			<button class="btn btn-success btn-block" [disabled]="!allowLogin" (click)="attemptLogin()">Login</button>
@@ -36,11 +36,11 @@
 				    </tr>
 				</thead>
 				<tbody>
-				    <tr *ngFor="let i = index; let user of tempUsers">
+				    <tr *ngFor="let i = index; let user of users">
 				      	<td>{{user.lastName}}</td>
 				      	<td>{{user.firstName}}</td>
 				      	<td>
-				      		<button class="btn btn-warning" (click)="tempSelectUser(i)">Choose</button>
+				      		<button class="btn btn-warning" (click)="selectUser(i)">Choose</button>
 				      	</td>
 				    </tr>
 				</tbody>

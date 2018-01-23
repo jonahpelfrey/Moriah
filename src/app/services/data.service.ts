@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
-import { Artist, Volunteer, Buyer, Order, ApiResponse } from '../models/models';
+import { Artist, Volunteer, Buyer, Order, ApiResponse, User } from '../models/models';
 
 @Injectable()
 export class DataService {
@@ -28,6 +28,10 @@ export class DataService {
   //queryUrl: string = '?search=';
 
 	constructor(private http: HttpClient) { }
+
+	getUsers(ref: string) {
+		return this.http.get<User[]>('http://localhost:8080/api/list/' + ref);
+	}
 
   	addOrder(order: Order) {
 		this.http.post('https://afmws.herokuapp.com/api/orders', order).subscribe((res: any) => {

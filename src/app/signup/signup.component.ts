@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators, FormBuilder, NgForm } from '@angula
 
 import { Buyer, PhoneNumber, ApiResponse } from '../models/models';
 import { DataService } from '../services/data.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -83,10 +84,11 @@ export class SignupComponent implements OnInit {
 			zip: "",		
 		},
 		phoneNumber: "",
-		email: ""
+		email: "",
+		_id: ""
 	};
 
-	constructor(private dataService: DataService) {}
+	constructor(private dataService: DataService, private auth: AuthService) {}
 
   	ngOnInit() {
   	}

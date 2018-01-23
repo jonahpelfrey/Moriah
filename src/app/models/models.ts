@@ -2,6 +2,7 @@ export interface Artist {
 
 	firstName: string;
 	lastName: string;
+	_id: string;
 }
 
 export interface Volunteer {
@@ -12,6 +13,7 @@ export interface Volunteer {
 
 export interface Buyer {
 
+	_id: string;
 	firstName: string;
 	lastName: string;
 	address: {
@@ -28,9 +30,9 @@ export interface Buyer {
 export interface Order {
 
 	refKey: number;
-	artist: string;
-	volunteer: string;
-	buyer: string;
+	artistId: string;
+	writerId: string;
+	buyerId: string;
 	date: string;
 	description: string;
 	price: number;
@@ -71,6 +73,16 @@ export interface User {
 export interface Role {
 	name: string;
 	ref: string;
+}
+
+export interface Permissions {
+	viewInvoices: boolean;
+	viewPersonalInvoices: boolean;
+	createInvoices: boolean;
+	editInvoices: boolean;
+	processPayments: boolean;
+	addNewNonMembers: boolean;
+	performAdminTasks: boolean;
 }
 
 
